@@ -4,6 +4,7 @@ package com.learning.RestAPIs.controllers;
 import com.learning.RestAPIs.DTO.AddStudentRequestDto;
 import com.learning.RestAPIs.DTO.StudentDTO;
 import com.learning.RestAPIs.service.StudentService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,7 +40,7 @@ public class StudentControllers {
 
     @PostMapping
     public ResponseEntity<StudentDTO>
-    createStudent(@RequestBody  AddStudentRequestDto addStudentRequestDto)
+    createStudent(@RequestBody @Valid AddStudentRequestDto addStudentRequestDto)
     {
 //        System.out.print("value:"+addStudentRequestDto);
         return ResponseEntity.status(HttpStatus.CREATED)
@@ -54,7 +55,7 @@ public class StudentControllers {
 
     @PutMapping("/{id}")
     public ResponseEntity<StudentDTO> updateStudent(@PathVariable Long id,
-                                                    @RequestBody
+                                                    @RequestBody @Valid
                                                     AddStudentRequestDto
                                                             addStudentRequestDto)
     {
